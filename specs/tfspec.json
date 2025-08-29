@@ -1,0 +1,810 @@
+{
+    "datasources": [
+        {
+            "name": "app_group",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "preferred_version",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "group_version",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "version",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "versions",
+                        "list_nested": {
+                            "computed_optional_required": "computed",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "group_version",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "version",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "configlet",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "name of the Configlet"
+                        }
+                    },
+                    {
+                        "name": "hash",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "resource content will be returned as it was at the time of this git hash"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                },
+                                {
+                                    "name": "namespace",
+                                    "string": {
+                                        "computed_optional_required": "computed"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "optional",
+                            "attributes": [
+                                {
+                                    "name": "configs",
+                                    "list_nested": {
+                                        "computed_optional_required": "optional",
+                                        "nested_object": {
+                                            "attributes": [
+                                                {
+                                                    "name": "config",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "JSON-formatted string representing the configuration to apply."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "operation",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Indicates the operation in which to apply the configuration."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "path",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Path to apply the configuration in jspath notation, including any keys if relevant, e.g. .system.information."
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "description": "Configurations to apply, being sets of paths, operations and JSON configurations."
+                                    }
+                                },
+                                {
+                                    "name": "endpoint_selector",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "Label selector to use to match targets to deploy Configlet to."
+                                    }
+                                },
+                                {
+                                    "name": "endpoints",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "Reference to targets to deploy Configlet to."
+                                    }
+                                },
+                                {
+                                    "name": "operating_system",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Operating system to match against when selecting targets."
+                                    }
+                                },
+                                {
+                                    "name": "priority",
+                                    "int64": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Priority of this Configlet, between -100 and 100. Higher priorities overwrite lower priorities in the event of conflicts."
+                                    }
+                                },
+                                {
+                                    "name": "version",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Version to match against when selecting targets."
+                                    }
+                                }
+                            ],
+                            "description": "Configlet is a configuration snippet that can be applied to a set of targets.\nThe path on the target is provided in jspath notation, and the configuration is provided as a JSON string.\nConfiglets can be applied to a set of targets based on a label selector, a list of targets, or a combination of both."
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed",
+                            "attributes": [
+                                {
+                                    "name": "endpoints",
+                                    "list": {
+                                        "computed_optional_required": "computed",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of targets this configlet has been applied to."
+                                    }
+                                }
+                            ],
+                            "description": "Deployment status of this Configlet."
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "configlet_list",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "fields",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a comma-separated list of resource fields to fetch/return.  If unspecified, all fields are fetched.  If empty, only key-fields are fetched."
+                        }
+                    },
+                    {
+                        "name": "filter",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "an EQL \"where\" expression that will be used to filter the set of resources returned."
+                        }
+                    },
+                    {
+                        "name": "labelselector",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "a label selector string to filter the results based on CR labels"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "required",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    },
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "items",
+                        "list_nested": {
+                            "computed_optional_required": "computed",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "api_version",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "kind",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "metadata",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "annotations",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "labels",
+                                                    "map": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "name": "name",
+                                                    "string": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                },
+                                                {
+                                                    "name": "namespace",
+                                                    "string": {
+                                                        "computed_optional_required": "computed"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "spec",
+                                        "single_nested": {
+                                            "computed_optional_required": "optional",
+                                            "attributes": [
+                                                {
+                                                    "name": "configs",
+                                                    "list_nested": {
+                                                        "computed_optional_required": "optional",
+                                                        "nested_object": {
+                                                            "attributes": [
+                                                                {
+                                                                    "name": "config",
+                                                                    "string": {
+                                                                        "computed_optional_required": "optional",
+                                                                        "description": "JSON-formatted string representing the configuration to apply."
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "name": "operation",
+                                                                    "string": {
+                                                                        "computed_optional_required": "optional",
+                                                                        "description": "Indicates the operation in which to apply the configuration."
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "name": "path",
+                                                                    "string": {
+                                                                        "computed_optional_required": "optional",
+                                                                        "description": "Path to apply the configuration in jspath notation, including any keys if relevant, e.g. .system.information."
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        "description": "Configurations to apply, being sets of paths, operations and JSON configurations."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "endpoint_selector",
+                                                    "list": {
+                                                        "computed_optional_required": "optional",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        },
+                                                        "description": "Label selector to use to match targets to deploy Configlet to."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "endpoints",
+                                                    "list": {
+                                                        "computed_optional_required": "optional",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        },
+                                                        "description": "Reference to targets to deploy Configlet to."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "operating_system",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Operating system to match against when selecting targets."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "priority",
+                                                    "int64": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Priority of this Configlet, between -100 and 100. Higher priorities overwrite lower priorities in the event of conflicts."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "version",
+                                                    "string": {
+                                                        "computed_optional_required": "optional",
+                                                        "description": "Version to match against when selecting targets."
+                                                    }
+                                                }
+                                            ],
+                                            "description": "Configlet is a configuration snippet that can be applied to a set of targets.\nThe path on the target is provided in jspath notation, and the configuration is provided as a JSON string.\nConfiglets can be applied to a set of targets based on a label selector, a list of targets, or a combination of both."
+                                        }
+                                    },
+                                    {
+                                        "name": "status",
+                                        "single_nested": {
+                                            "computed_optional_required": "computed",
+                                            "attributes": [
+                                                {
+                                                    "name": "endpoints",
+                                                    "list": {
+                                                        "computed_optional_required": "computed",
+                                                        "element_type": {
+                                                            "string": {}
+                                                        },
+                                                        "description": "List of targets this configlet has been applied to."
+                                                    }
+                                                }
+                                            ],
+                                            "description": "Deployment status of this Configlet."
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "resource_list",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "group_version",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed"
+                        }
+                    },
+                    {
+                        "name": "resources",
+                        "list_nested": {
+                            "computed_optional_required": "computed",
+                            "nested_object": {
+                                "attributes": [
+                                    {
+                                        "name": "kind",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "name",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "namespaced",
+                                        "bool": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "read_only",
+                                        "bool": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "singular_name",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    },
+                                    {
+                                        "name": "ui_category",
+                                        "string": {
+                                            "computed_optional_required": "computed"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "provider": {
+        "name": "config"
+    },
+    "resources": [
+        {
+            "name": "configlet",
+            "schema": {
+                "attributes": [
+                    {
+                        "name": "api_version",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "config.eda.nokia.com/v1alpha1"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^config\\\\.eda\\\\.nokia\\\\.com/v1alpha1$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "kind",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "default": {
+                                "static": "Configlet"
+                            },
+                            "validators": [
+                                {
+                                    "custom": {
+                                        "imports": [
+                                            {
+                                                "path": "regexp"
+                                            },
+                                            {
+                                                "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                            }
+                                        ],
+                                        "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^Configlet$\"), \"\")"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "metadata",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "annotations",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "labels",
+                                    "map": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "name",
+                                    "string": {
+                                        "computed_optional_required": "required",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.LengthAtMost(253)"
+                                                }
+                                            },
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "regexp"
+                                                        },
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$\"), \"\")"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "namespace",
+                                    "string": {
+                                        "computed_optional_required": "required"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spec",
+                        "single_nested": {
+                            "computed_optional_required": "required",
+                            "attributes": [
+                                {
+                                    "name": "configs",
+                                    "list_nested": {
+                                        "computed_optional_required": "required",
+                                        "nested_object": {
+                                            "attributes": [
+                                                {
+                                                    "name": "config",
+                                                    "string": {
+                                                        "computed_optional_required": "required",
+                                                        "description": "JSON-formatted string representing the configuration to apply."
+                                                    }
+                                                },
+                                                {
+                                                    "name": "operation",
+                                                    "string": {
+                                                        "computed_optional_required": "computed_optional",
+                                                        "default": {
+                                                            "static": "Create"
+                                                        },
+                                                        "description": "Indicates the operation in which to apply the configuration.",
+                                                        "validators": [
+                                                            {
+                                                                "custom": {
+                                                                    "imports": [
+                                                                        {
+                                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                                        }
+                                                                    ],
+                                                                    "schema_definition": "stringvalidator.OneOf(\n\"Create\",\n\"Update\",\n\"Delete\",\n)"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "name": "path",
+                                                    "string": {
+                                                        "computed_optional_required": "required",
+                                                        "description": "Path to apply the configuration in jspath notation, including any keys if relevant, e.g. .system.information."
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "description": "Configurations to apply, being sets of paths, operations and JSON configurations."
+                                    }
+                                },
+                                {
+                                    "name": "endpoint_selector",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "Label selector to use to match targets to deploy Configlet to."
+                                    }
+                                },
+                                {
+                                    "name": "endpoints",
+                                    "list": {
+                                        "computed_optional_required": "optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "Reference to targets to deploy Configlet to."
+                                    }
+                                },
+                                {
+                                    "name": "operating_system",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Operating system to match against when selecting targets.",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "stringvalidator.OneOf(\n\"srl\",\n\"sros\",\n)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "priority",
+                                    "int64": {
+                                        "computed_optional_required": "computed_optional",
+                                        "default": {
+                                            "static": 0
+                                        },
+                                        "description": "Priority of this Configlet, between -100 and 100. Higher priorities overwrite lower priorities in the event of conflicts.",
+                                        "validators": [
+                                            {
+                                                "custom": {
+                                                    "imports": [
+                                                        {
+                                                            "path": "github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+                                                        }
+                                                    ],
+                                                    "schema_definition": "int64validator.Between(-100, 100)"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "version",
+                                    "string": {
+                                        "computed_optional_required": "optional",
+                                        "description": "Version to match against when selecting targets."
+                                    }
+                                }
+                            ],
+                            "description": "Configlet is a configuration snippet that can be applied to a set of targets.\nThe path on the target is provided in jspath notation, and the configuration is provided as a JSON string.\nConfiglets can be applied to a set of targets based on a label selector, a list of targets, or a combination of both."
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "single_nested": {
+                            "computed_optional_required": "computed_optional",
+                            "attributes": [
+                                {
+                                    "name": "endpoints",
+                                    "list": {
+                                        "computed_optional_required": "computed_optional",
+                                        "element_type": {
+                                            "string": {}
+                                        },
+                                        "description": "List of targets this configlet has been applied to."
+                                    }
+                                }
+                            ],
+                            "description": "Deployment status of this Configlet."
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "name of the Configlet"
+                        }
+                    },
+                    {
+                        "name": "namespace",
+                        "string": {
+                            "computed_optional_required": "computed_optional",
+                            "description": "the namespace scope in which to operate"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "version": "0.1"
+}

@@ -1,0 +1,15 @@
+Path,Method,Schema,Model Name,Supported,Datasource,Resource
+/apps/config.eda.nokia.com,GET,AppGroup,app_group,true,true,false
+/apps/config.eda.nokia.com/v1alpha1,GET,ResourceList,resource_list,true,true,false
+/apps/config.eda.nokia.com/v1alpha1/_ui/{pathname},GET,UIResult,,false,false,false
+/apps/config.eda.nokia.com/v1alpha1/configlets,GET,com.nokia.eda.config.v1alpha1.ConfigletList,,false,false,false
+/apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets,DELETE,com.nokia.eda.config.v1alpha1.ConfigletList,,false,false,false
+/apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets,GET,com.nokia.eda.config.v1alpha1.ConfigletList,configlet_list,true,true,false
+/apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets,POST,com.nokia.eda.config.v1alpha1.Configlet,configlet,true,false,true
+/apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/_deleted,GET,com.nokia.eda.config.v1alpha1.Configlet_DeletedResources,,false,false,false
+/apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name},DELETE,Status,configlet,true,false,true
+/apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name},GET,com.nokia.eda.config.v1alpha1.Configlet,configlet,true,true,true
+/apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name},PATCH,Patch,,false,false,false
+/apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name},PUT,com.nokia.eda.config.v1alpha1.Configlet,configlet,true,false,true
+/apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}/_revs,GET,ResourceHistory,,false,false,false
+/apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}/_topology,GET,ResourceTopology,,false,false,false

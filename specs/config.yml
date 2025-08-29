@@ -1,0 +1,38 @@
+provider:
+  name: config
+
+data_sources:
+  app_group:
+    read:
+      path: /apps/config.eda.nokia.com
+      method: GET
+
+  configlet:
+    read:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}
+      method: GET
+
+  configlet_list:
+    read:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets
+      method: GET
+
+  resource_list:
+    read:
+      path: /apps/config.eda.nokia.com/v1alpha1
+      method: GET
+
+resources:
+  configlet:
+    create:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets
+      method: POST
+    read:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}
+      method: GET
+    update:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}
+      method: PUT
+    delete:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}
+      method: DELETE

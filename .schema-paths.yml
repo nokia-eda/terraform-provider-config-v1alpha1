@@ -1,0 +1,90 @@
+app_group:
+  - read:
+      path: /apps/config.eda.nokia.com
+      method: GET
+
+patch:
+  - update:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}
+      method: PATCH
+
+resource_history:
+  - read:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}/_revs
+      method: GET
+
+resource_list:
+  - read:
+      path: /apps/config.eda.nokia.com/v1alpha1
+      method: GET
+
+resource_topology:
+  - read:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}/_topology
+      method: GET
+
+status:
+  - delete:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}
+      method: DELETE
+
+ui_result:
+  - read:
+      path: /apps/config.eda.nokia.com/v1alpha1/_ui/{pathname}
+      method: GET
+
+com.nokia.eda.config.v1alpha1.configlet:
+  - create:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets
+      method: POST
+  - read:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}
+      method: GET
+  - update:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}
+      method: PUT
+
+com.nokia.eda.config.v1alpha1.configlet_list:
+  - read:
+      path: /apps/config.eda.nokia.com/v1alpha1/configlets
+      method: GET
+  - read:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets
+      method: GET
+  - delete:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets
+      method: DELETE
+
+com.nokia.eda.config.v1alpha1.configlet_deleted_resources:
+  - read:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/_deleted
+      method: GET
+
+totalPaths: 9
+totalSchemas: 33
+usedSchemas: 10
+unusedSchemas: 23
+unusedSchemaList:
+  - AppGroupVersion
+  - ErrorIndex
+  - ErrorItem
+  - ErrorResponse
+  - K8SPatchOp
+  - OverlayState
+  - Resource
+  - ResourceHistoryEntry
+  - StatusDetails
+  - TopoAttrMetadata
+  - TopoElemMetadata
+  - TopoLinkEndpoint
+  - TopoNodeGrouping
+  - TopoOverlayEndpoint
+  - TopoOverlayEndpointState
+  - TopoOverlayLink
+  - TopoOverlayLinkState
+  - TopoOverlayNode
+  - TopoOverlayNodeState
+  - TopoSchema
+  - Topology
+  - com.nokia.eda.config.v1alpha1.Configlet_DeletedResourceEntry
+  - com.nokia.eda.config.v1alpha1.Configlet_metadata
