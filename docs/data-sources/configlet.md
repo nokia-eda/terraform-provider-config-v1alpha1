@@ -29,7 +29,9 @@ Configlets can be applied to a set of targets based on a label selector, a list 
 
 ### Read-Only
 
+- `alarms` (Attributes) (see [below for nested schema](#nestedatt--alarms))
 - `api_version` (String)
+- `deviations` (Attributes) (see [below for nested schema](#nestedatt--deviations))
 - `kind` (String)
 - `metadata` (Attributes) (see [below for nested schema](#nestedatt--metadata))
 - `status` (Attributes) Deployment status of this Configlet. (see [below for nested schema](#nestedatt--status))
@@ -55,6 +57,25 @@ Optional:
 - `operation` (String) Indicates the operation in which to apply the configuration.
 - `path` (String) Path to apply the configuration in jspath notation, including any keys if relevant, e.g. .system.information.
 
+
+
+<a id="nestedatt--alarms"></a>
+### Nested Schema for `alarms`
+
+Read-Only:
+
+- `critical` (Number)
+- `major` (Number)
+- `minor` (Number)
+- `warning` (Number)
+
+
+<a id="nestedatt--deviations"></a>
+### Nested Schema for `deviations`
+
+Read-Only:
+
+- `count` (Number)
 
 
 <a id="nestedatt--metadata"></a>

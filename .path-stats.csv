@@ -12,4 +12,6 @@ Path,Method,Schema,Model Name,Supported,Datasource,Resource
 /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name},PATCH,Patch,,false,false,false
 /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name},PUT,com.nokia.eda.config.v1alpha1.Configlet,configlet,true,false,true
 /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}/_revs,GET,ResourceHistory,,false,false,false
+/apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}/_targets,GET,IntentTargets,,false,false,false
 /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}/_topology,GET,ResourceTopology,,false,false,false
+/apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}/_topology,POST,K8STopologyRequest,,false,false,false
