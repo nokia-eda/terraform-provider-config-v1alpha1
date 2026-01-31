@@ -13,11 +13,6 @@ k8_s_topology_request:
       path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}/_topology
       method: POST
 
-patch:
-  - update:
-      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}
-      method: PATCH
-
 resource_history:
   - read:
       path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}/_revs
@@ -53,6 +48,9 @@ com.nokia.eda.config.v1alpha1.configlet:
   - update:
       path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}
       method: PUT
+  - update:
+      path: /apps/config.eda.nokia.com/v1alpha1/namespaces/{namespace}/configlets/{name}
+      method: PATCH
 
 com.nokia.eda.config.v1alpha1.configlet_list:
   - read:
@@ -72,8 +70,8 @@ com.nokia.eda.config.v1alpha1.configlet_deleted_resources:
 
 totalPaths: 10
 totalSchemas: 54
-usedSchemas: 12
-unusedSchemas: 42
+usedSchemas: 11
+unusedSchemas: 43
 unusedSchemaList:
   - AppGroupVersion
   - ErrorIndex
@@ -82,6 +80,7 @@ unusedSchemaList:
   - IntentTarget
   - K8SPatchOp
   - OverlayState
+  - Patch
   - Resource
   - ResourceHistoryEntry
   - StatusDetails
