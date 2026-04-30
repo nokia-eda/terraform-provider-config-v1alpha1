@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+
+- Allow Configlet delete operations without providing the `config` in the request body.
+
 ## 1.0.1
 
 - Fix K8s Patch operation for the resource.
